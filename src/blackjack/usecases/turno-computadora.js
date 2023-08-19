@@ -1,5 +1,5 @@
 // turno de la computadora
-import { pedirCarta, valorCarta, crearCartaHTML } from "./";
+import { pedirCarta, valorCarta, crearCartaHTML, determinarGanador } from "./";
 
 /**
  *
@@ -34,15 +34,5 @@ export const turnoComputadora = (
     }
   } while (puntosComputadora < puntosMinimos && puntosMinimos <= 21);
 
-  setTimeout(() => {
-    if (puntosComputadora === puntosMinimos) {
-      alert("Nadie gana :(");
-    } else if (puntosMinimos > 21) {
-      alert("Computadora gana");
-    } else if (puntosComputadora > 21) {
-      alert("Jugador Gana");
-    } else {
-      alert("Computadora Gana");
-    }
-  }, 100);
+  determinarGanador(puntosComputadora, puntosMinimos);
 };

@@ -2,11 +2,12 @@
 // import { crearDeck as crearNuevoDeck } from "./usecases/crear-deck";
 import _ from "underscore";
 import {
-  crearDeck,
-  pedirCarta,
-  valorCarta,
-  turnoComputadora,
   crearCartaHTML,
+  crearDeck,
+  disableBtnPedirDetener,
+  pedirCarta,
+  turnoComputadora,
+  valorCarta,
 } from "./usecases";
 
 let deck = [];
@@ -20,15 +21,13 @@ let puntosJugador = 0,
 const btnPedir = document.querySelector("#btnPedir");
 const btnDetener = document.querySelector("#btnDetener");
 const btnNuevo = document.querySelector("#btnNuevo");
-
 const divCartasJugador = document.querySelector("#jugador-cartas");
 const divCartasComputadora = document.querySelector("#computadora-cartas");
-
 const puntosHTML = document.querySelectorAll("small");
 
 deck = crearDeck(tipos, especiales);
 
-// Eventosrun dev
+// Eventos
 btnPedir.addEventListener("click", () => {
   const carta = pedirCarta(deck);
 
@@ -40,21 +39,17 @@ btnPedir.addEventListener("click", () => {
 
   if (puntosJugador > 21) {
     console.warn("Lo siento mucho, perdiste");
-    btnPedir.disabled = true;
-    btnDetener.disabled = true;
+    disableBtnPedirDetener(btnPedir, btnDetener);
     turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
   } else if (puntosJugador === 21) {
     console.warn("21, genial!");
-    btnPedir.disabled = true;
-    btnDetener.disabled = true;
+    disableBtnPedirDetener(btnPedir, btnDetener);
     turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
   }
 });
 
 btnDetener.addEventListener("click", () => {
-  btnPedir.disabled = true;
-  btnDetener.disabled = true;
-
+  disableBtnPedirDetener(btnPedir, btnDetener);
   turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
 });
 
