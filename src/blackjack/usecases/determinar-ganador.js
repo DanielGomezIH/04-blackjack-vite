@@ -1,3 +1,10 @@
+/**
+ *
+ * @param {*} puntosComputadora
+ * @param {*} puntosMinimos
+ * @returns {Alert<String>} Retorna una alerta que determina el ganador
+ */
+
 export const determinarGanador = (puntosComputadora, puntosMinimos) => {
   setTimeout(() => {
     if (puntosComputadora === puntosMinimos) {
