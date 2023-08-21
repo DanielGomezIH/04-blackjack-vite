@@ -1,7 +1,7 @@
 /**
  *
- * @param {*} puntosComputadora
- * @param {*} puntosMinimos
+ * @param {Number} puntosComputadora Puntos de la computadora
+ * @param {Number} puntosMinimos puntos mínimos que la computadora necesita para ganar
  * @returns {Alert<String>} Retorna una alerta que determina el ganador
  */
 
